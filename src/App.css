@@ -1,0 +1,10 @@
+.navlink{
+    color: white !important;
+    font-weight:bolder ;
+    font-family: serif; 
+    font-size: large; 
+}
+
+.navlink:hover{
+    color: grey !important;
+}
