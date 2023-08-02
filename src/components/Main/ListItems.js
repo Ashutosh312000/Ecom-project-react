@@ -1,6 +1,23 @@
 import React from "react";
-import { Container,Row,Col, Card,Button } from "react-bootstrap";
+import { Card,Button } from "react-bootstrap";
+import { useContext } from "react";
+import CartContext from "../../store/Cart-context";
+
+
 function ListItem(props){
+
+    const cartctx=useContext(CartContext)
+
+    function addToCart(){
+        const item={
+            id:props.id,
+            title:props.title,
+            imageUrl:props.imageUrl,
+            price:props.price,
+            quantity:1,
+        }
+        cartctx.addItem(item)
+    }
 
 return (
     <>
@@ -9,21 +26,9 @@ return (
                 <Card.Img variant="top" src={props.imageUrl}></Card.Img>
                 <Card.Footer className="d-flex justify-content-between">
                     <span>${props.price}</span>
-                    <Button className="btn-sm" variant="primary">Add To Cart</Button>
+                    <Button onClick={addToCart} className="btn-sm" variant="primary">Add To Cart</Button>
                 </Card.Footer>
         </Card>
-
-
-        {/* <Container>
-            <Row className="row-cols-2">
-                <Col>hi</Col>
-                <Col>hi</Col>
-                <Col>hi</Col>
-                <Col>hi</Col>
-                <Col>hi</Col>
-            </Row>
-        </Container> */}
-
 
     </>
 )

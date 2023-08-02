@@ -1,11 +1,15 @@
-import React from "react";
-import CloseButton from 'react-bootstrap/CloseButton';
-import { Container,Row,Col,Image,Form,Button } from "react-bootstrap";
+import React, { useContext } from "react";
+import { Row,Col,Image,Form,Button } from "react-bootstrap";
 import classes from './Carts.module.css'
+import CartContext from "../../store/Cart-context";
 
 
 
 function Product(props) {
+    const cartctx=useContext(CartContext)
+    function removeFromCart(){
+        cartctx.removeItem(props.ele.id);
+    }
 
     return (
         <Row >
@@ -26,7 +30,7 @@ function Product(props) {
                             </Form>
                         </Col>
                         <Col>
-                        <Button size="sm" className="mt-4" variant="danger">Remove</Button>
+                        <Button onClick={removeFromCart} size="sm" className="mt-4" variant="danger">Remove</Button>
                         </Col>
                     
                     </Row>

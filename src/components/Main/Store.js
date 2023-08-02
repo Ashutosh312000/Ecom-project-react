@@ -5,7 +5,7 @@ import ListItem from "./ListItems";
 const productsArr = [
 
     {
-
+        id:1,
         title: 'Colors',
 
         price: 100,
@@ -15,7 +15,7 @@ const productsArr = [
     },
 
     {
-
+        id:2,
         title: 'Black and white Colors',
 
         price: 50,
@@ -25,7 +25,7 @@ const productsArr = [
     },
 
     {
-
+        id:3,
         title: 'Yellow and Black Colors',
 
         price: 70,
@@ -35,7 +35,7 @@ const productsArr = [
     },
 
     {
-
+        id:4,
         title: 'Blue Color',
 
         price: 100,
@@ -58,8 +58,9 @@ function Store() {
                 <Row >
                     {productsArr.map((prd)=>{
                         return(
-                        <Col className=" col-4 offset-2 mt-4" >
+                        <Col key={prd.id} className=" col-4 offset-2 mt-4" >
                             <ListItem
+                            id={prd.id}
                         title={prd.title}
                         price={prd.price}
                         imageUrl={prd.imageUrl}

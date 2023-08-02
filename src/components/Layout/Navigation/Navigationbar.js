@@ -1,7 +1,12 @@
 
 import { Navbar,Nav,Container,Button} from 'react-bootstrap'
 import './Navigationbar.module.css';
+import { useContext } from 'react';
+import CartContext from '../../../store/Cart-context';
 function Navigationbar(props) {
+
+  const cartctx=useContext(CartContext);
+
   return (
     <>
        <Navbar className='fixed-top bg-light' bg="dark" data-bs-theme="dark" expand="lg">
@@ -12,7 +17,8 @@ function Navigationbar(props) {
             <Nav.Link className='px-5 navlink' href="#about">About</Nav.Link>
           </Nav>
         </Container>
-        <Button onClick={props.cartHandler} variant="primary">Cart</Button>
+        <Button onClick={props.cartHandler} variant="primary">Cart</Button>  <span className='pl-2' style={{color:'white'}}> {cartctx.items.length}</span>
+
       </Navbar>
       
   </>)
