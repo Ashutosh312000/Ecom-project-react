@@ -55,10 +55,10 @@ function Store() {
         <div style={{textAlign:"center"}}>
             <h2>Music</h2>
             <Container>
-                <Row>
+                <Row >
                     {productsArr.map((prd)=>{
                         return(
-                        <Col className="col-4 offset-2 mt-4" >
+                        <Col className=" col-4 offset-2 mt-4" >
                             <ListItem
                         title={prd.title}
                         price={prd.price}

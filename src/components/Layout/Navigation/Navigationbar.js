@@ -1,7 +1,7 @@
 
 import { Navbar,Nav,Container,Button} from 'react-bootstrap'
 import './Navigationbar.module.css';
-function Navigationbar() {
+function Navigationbar(props) {
   return (
     <>
        <Navbar className='fixed-top bg-light' bg="dark" data-bs-theme="dark" expand="lg">
@@ -12,7 +12,7 @@ function Navigationbar() {
             <Nav.Link className='px-5 navlink' href="#about">About</Nav.Link>
           </Nav>
         </Container>
-        <Button variant="primary">Cart</Button>
+        <Button onClick={props.cartHandler} variant="primary">Cart</Button>
       </Navbar>
       
   </>)
