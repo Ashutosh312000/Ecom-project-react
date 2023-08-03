@@ -1,8 +1,10 @@
 
 import { Navbar,Nav,Container,Button} from 'react-bootstrap'
+import { NavLink } from 'react-router-dom';
 import './Navigationbar.module.css';
 import { useContext } from 'react';
 import CartContext from '../../../store/Cart-context';
+import classes from './Navigationbar.module.css'
 function Navigationbar(props) {
 
   const cartctx=useContext(CartContext);
@@ -12,9 +14,15 @@ function Navigationbar(props) {
        <Navbar className='fixed-top bg-light' bg="dark" data-bs-theme="dark" expand="lg">
         <Container className='d-flex justify-content-center '>
           <Nav className="me-auto">
-            <Nav.Link className='px-5 navlink' href="#home">Home</Nav.Link>
-            <Nav.Link className='px-5 navlink' href="#store">Store</Nav.Link>
-            <Nav.Link className='px-5 navlink' href="#about">About</Nav.Link>
+            <NavLink to="/" className={ ({isActive})=>{
+              return isActive?`${classes.active} px-5 navlink`: 'px-5 navlink'
+            }}>Home</NavLink>
+            <NavLink to="/Store" className={({isActive})=>{
+              return isActive?`${classes.active} px-5 navlink`: 'px-5 navlink'
+            }} >Store</NavLink>
+            <NavLink to="/About" className={({isActive})=>{
+              return isActive?`${classes.active} px-5 navlink `: 'px-5 navlink'
+            }} >About</NavLink>
           </Nav>
         </Container>
         <Button onClick={props.cartHandler} variant="primary">Cart</Button>  <span className='pl-2' style={{color:'white'}}> {cartctx.items.length}</span>

@@ -1,6 +1,8 @@
-import React from "react";
+
 import { Container, Row, Col,Button } from "react-bootstrap";
 import ListItem from "./ListItems";
+
+
 
 const productsArr = [
 
@@ -48,7 +50,8 @@ const productsArr = [
 
 
 
-function Store() {
+function Store(props) {
+
 
     return (
         <>
