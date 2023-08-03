@@ -1,30 +1,32 @@
 import './App.css';
-import {createBrowserRouter,RouterProvider }from "react-router-dom"
-import ErrorPage from "./components/error/error"
-import About from "./components/Main/About"
-import Store from "./components/Main/Store"
-import RootLayout from './components/pages/RootLayout'
-import Home from './components/Main/Home';
-
-const router=createBrowserRouter([
-  {
-    path:'/',element:<RootLayout/>,errorElement:<ErrorPage/>, 
-    children:[
-      {path:'/', element:<Home/>,errorElement:<ErrorPage/>},
-    {path:'/Store', element:<Store/>,errorElement:<ErrorPage/>},
-    {path:'/About', element:<About/>,errorElement:<ErrorPage/>}
-  ]
-  },
-  
-    
-])
-
+import Main from './components/Main/Main';
+import Navigationbar from './components/Layout/Navigation/Navigationbar';
+import Header from './components/Layout/Header/Header'
+import Footer from'./components/Layout/Footer/Footer'
+import Cart from './components/Cart/Carts'
+import { useState } from 'react'
+import CartProvider from './store/CartProvider'
 
 
 function App() {
 
+  
+  const [showCart,setShowCart]=useState(false);
+
+  const cartHandler=function(){
+    setShowCart(prevState=>{
+      return prevState?false:true;
+    });
+  }
+
   return (
-    <RouterProvider router={router} />
+    <CartProvider>
+    { showCart && <Cart  cartHandler={cartHandler} ></Cart>}
+   <Navigationbar cartHandler={cartHandler}></Navigationbar>
+   <Header></Header>
+    <Main></Main>
+   <Footer></Footer>
+   </CartProvider>
   )
 }
 

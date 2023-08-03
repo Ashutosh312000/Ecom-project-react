@@ -1,22 +1,28 @@
 import React from "react";
+import Home from './Home'
 import Store from "./Store";
-import {createBrowserRouter,RouterProvider }from "react-router-dom"
-import ErrorPage from "../error/error"
 import About from "./About";
+import {Route} from "react-router-dom"
+import ContactUs from "./ContactUs";
 
+function Main() {
 
-const router=createBrowserRouter([
-    {path:'/Store', element:<Store/>,errorElement:<ErrorPage/>},
-    {path:'/About', element:<About/>,errorElement:<ErrorPage/>}
-])
-
-function Main(){
-
-return (
-    <>
-        <RouterProvider router={router} />
-    </>
-)
+    return (
+        <>
+            <Route exact path="/">
+                <Home />
+            </Route>
+            <Route exact path="/Store">
+                <Store />
+            </Route>
+            <Route exact path="/About">
+                <About />
+            </Route>
+            <Route exact path="/ContactUs">
+                <ContactUs />
+            </Route>
+        </>
+    )
 
 }
 
